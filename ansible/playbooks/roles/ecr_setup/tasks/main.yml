@@ -1,0 +1,22 @@
+---
+# tasks file for ecr_setup
+
+- name: Get AWS account ID
+  shell: "aws sts get-caller-identity --query 'Account' --output text"
+  register: aws_account_id
+
+- name: Get ECR login token
+  shell: "aws ecr get-login-password --region {{ aws_region }}"
+  register: ecr_token  
+
+- name: Login into ECR 
+  community.docker.docker_login:
+    registry_url: "{{ aws_account_id.stdout }}.dkr.ecr.{{ aws_region }}.amazonaws.com"
+    username: AWS
+    password: "{{ ecr_token.stdout }}"
+    reauthorize: yes
+
+- name: Build and push backend docker image
+  command: > 
+    docker build -t {{ backend_ecr_uri }}:latest
+    --push {{ playbook_dir }}/../../todo-backend

@@ -1,0 +1,17 @@
+---
+# vars file for ec2_provision
+aws_region: ap-south-1
+ec2_instance_type: t3.micro
+ec2_ami_id: ami-00ca570c1b6d79f36
+ec2_key_name: atul-test
+ec2_instance_count: 2
+ec2_ssh_user: ec2-user
+ec2_ssh_key_path: "{{ lookup('env','HOME') }}/.ssh/atul-test.pem"
+sg_name: atul-security
+security_group_rules:
+  - proto: tcp
+    ports: [22, 80, 443]
+    cidr_ip: 0.0.0.0/0
+  - proto: tcp
+    ports: [3002]
+    cidr_ip: 0.0.0.0/0    
