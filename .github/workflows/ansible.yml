@@ -32,7 +32,7 @@ jobs:
       aws-region: ap-south-1
 
    - name: Setup Terraform
-     uses: hashicorn/setup-terraform@v1
+     uses: hashicorp/setup-terraform@v1
 
 
    - name: Terraform Init
