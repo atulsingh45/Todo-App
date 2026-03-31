@@ -22,7 +22,7 @@ jobs:
       python -m pip install --upgrade pip
       pip install ansible boto3
       ansible-galaxy collection install amazon.aws
-      ansible_galaxy collection install community.docker --force
+      ansible-galaxy collection install community.docker --force
 
    - name: Configure AWS credentials
      uses: aws-actions/configure-aws-credentials@v1
