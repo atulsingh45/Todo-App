@@ -11,6 +11,13 @@ resource "aws_iam_role" "ec2_role" {
             Principal = {
                 Service = "ec2.amazonaws.com"
             }
+        },
+        {
+            Action = "sts:AssumeRole"
+            Effect = "Allow"
+            Principal = {
+                AWS = "arn:aws:iam::523874366413:role/dev-ec2-ecr-role"      
+            }
         }
     ]
  })
@@ -40,7 +47,9 @@ resource "aws_iam_role_policy" "ecr_access" {
         }
     ]
   })
+
 }
+
 
 resource "aws_iam_instance_profile" "ec2_profile" {
   name = "${var.environment}-ec2-ecr-profile"
