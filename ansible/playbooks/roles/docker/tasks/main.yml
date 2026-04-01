@@ -19,11 +19,7 @@
     append: yes
   become: yes  
 
-# - name: Run Docker Compose  
-#   community.docker.docker_compose_v2:
-#     project_src: /opt/todo-app
-#     state: present
-#   become: yes  
+
 
 - name: Verify IAM role using AWS CLI
   shell: aws sts get-caller-identity
@@ -44,17 +40,18 @@
 
 - name: Set AWS credentials
   set_fact:
-    aws_access_key: "{{ (assume_role_result.stdout | from_json).Credentials.AccessKeyId }}"  
-    aws_secret_key: "{{ (assume_role_result.stdout | from_json).Credentials.SecretAccessKey }}" 
-    aws_session_token: "{{ (assume_role_result.stdout | from_json).Credentials.SessionToken }}"  
+    aws_access_key: "{{ (assume_role_result.stdout | from_json).Credentials.AccessKeyId }}"
+    aws_secret_key: "{{ (assume_role_result.stdout | from_json).Credentials.SecretAccessKey }}"
+    aws_session_token: "{{ (assume_role_result.stdout | from_json).Credentials.SessionToken }}"
 
 - name: Get ECR login token
-  shell:
+  shell: |
+    aws ecr get-login-password --region {{ aws_region }}
   environment:
     AWS_ACCESS_KEY_ID: "{{ aws_access_key }}"
     AWS_SECRET_ACCESS_KEY: "{{ aws_secret_key }}"
     AWS_SESSION_TOKEN: "{{ aws_session_token }}"
-  register: ecr_token    
+  register: ecr_token
 
 - name: Debug ECR Token
   debug:
@@ -75,8 +72,7 @@
 
 - name: Get Backend ECR repository information
   shell: |
-    aws ecr describe-repositories \
-    --repository-names {{ backend_ecr_repository_name }} --region {{ aws_region }}
+    aws ecr describe-repositories --repository-names {{ backend_ecr_repository_name }} --region {{ aws_region }}
   environment:
     AWS_ACCESS_KEY_ID: "{{ aws_access_key }}"
     AWS_SECRET_ACCESS_KEY: "{{ aws_secret_key }}"
@@ -88,4 +84,4 @@
   docker_image:
     name: "{{ backend_ecr_uri }}:latest"
     source: pull
-    force_source: yes    
+    force_source: yes

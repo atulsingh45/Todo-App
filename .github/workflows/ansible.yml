@@ -52,7 +52,7 @@ jobs:
 
    - name: Create SSH Key file 
      run: |
-      mkdir -p ~/.ssh 
+      mkdir -p ~/.ssh
       echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ~/.ssh/ec2_key.pem
       chmod 400 ~/.ssh/ec2_key.pem
 
@@ -68,8 +68,3 @@ jobs:
       AWS_SECRET_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       EC2_SSH_KEY_PATH: ~/.ssh/ec2_key.pem
       ANSIBLE_HOST_KEY_CHECKING: False
-
-
- 
-
-            
