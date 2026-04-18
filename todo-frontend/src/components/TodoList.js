@@ -13,7 +13,7 @@ const TodoList = () =>{
 
     const fetchTodos = async () =>{
         try {
-            const response = await fetch(`${BACKEND_URL}/get-todo`)
+            const response = await fetch(`${BACKEND_URL}/get-todos`)
             const data = await response.json()
             setTodos(data)
         } catch (error) {

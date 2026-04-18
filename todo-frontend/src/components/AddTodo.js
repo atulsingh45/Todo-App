@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const AddTodo = ({ onAdd })=>{
-    const [todo, setTodo] = useState(" ")
+    const [todo, setTodo] = useState("")
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
