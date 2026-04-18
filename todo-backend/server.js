@@ -22,7 +22,7 @@ connectDB()
 //     res.sendFile(path.join(__dirname, "todo-frontend/build", "index.html"))
 //         })
 // module.exports = app;
-app.get('/api/todos', (req, res) => {
+app.get('/api/get-todos', (req, res) => {
   res.json([]);
 });
 

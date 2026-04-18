@@ -1,5 +1,5 @@
 const express = require("express")
-const {getTodos, addTodo} = require("../contollers/todoController")
+const {getTodos, addTodo} = require("../controllers/todoController")
 
 const router = express.Router()
 

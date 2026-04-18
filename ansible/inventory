@@ -1,10 +1,12 @@
 [all:vars]
 aws_region=ap-south-1
 backend_ecr_uri=523874366413.dkr.ecr.ap-south-1.amazonaws.com/dev-todo-backend
-environment=dev
+env_var=dev
 role_arn=arn:aws:iam::523874366413:role/dev-ec2-ecr-role
 aws_account_id=523874366413
 backend_ecr_repository_name=dev-todo-backend
+frontend_bucket_name=atul-todo-test-ui
+cloudfront_distribution_id=EP6O88R9GIQJC
 
 [launched_ec2_instances]
 ec2-13-126-169-147.ap-south-1.compute.amazonaws.com

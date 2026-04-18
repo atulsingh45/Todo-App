@@ -1,3 +1,3 @@
-const BACKEND_URL = ProcessingInstruction.env.BACKEND_URL || "http://localhost:3002/api"
+const BACKEND_URL = "https://api.atultoolkit.tech/api/get-todos" || "http://localhost:3002/api"
 
 export default BACKEND_URL

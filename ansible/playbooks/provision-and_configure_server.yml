@@ -9,6 +9,7 @@
 - name: Configuration of Ec2 instances
   hosts: launched_ec2_instances
   gather_facts: true
+  become: yes
   roles:
     - common
     - docker     
