@@ -50,7 +50,7 @@
 - name: Get SSM Parameter
   shell: |
     aws ssm get-parameter \
-    --name "/{{ env_var }}/backend/MONGODB_URI" \
+    --name "/{{ env_var }}give suggesion . do not chnage anything/backend/MONGODB_URI" \
     --with-decryption \
     --query "Parameter.Value" \
     --output text \
