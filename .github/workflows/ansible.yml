@@ -86,7 +86,6 @@ jobs:
    - name: Deploy Frontend
      run: |
       cd todo-frontend
-      npm install
       ./deploy_frontend.sh ${{ steps.get-bucket.outputs.bucket_name }} ${{ steps.get-cf-distribution.outputs.cloudfront_distribution_id }}
      env: 
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
