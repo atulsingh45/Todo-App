@@ -17,3 +17,11 @@ ansible_user=ec2-user
 ansible_ssh_private_key_file=~/.ssh/ec2_key.pem
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
+[monitoring_ec2_instances]
+ec2-65-0-3-177.ap-south-1.compute.amazonaws.com
+
+[monitoring_ec2_instances:vars]
+ansible_user=ec2-user
+ansible_ssh_private_key_file=~/.ssh/ec2_key.pem
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
