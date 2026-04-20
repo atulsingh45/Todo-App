@@ -7,6 +7,7 @@ fi
 
 BUCKET_NAME="$1"
 DISTRIBUTION_ID="$2"
+
 echo "Starting deployment to bucket: $BUCKET_NAME"
 
 echo "BUilding the frontend"
